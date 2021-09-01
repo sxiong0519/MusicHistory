@@ -201,7 +201,7 @@ JOIN Album al ON a.Id = al.ArtistId
 GROUP BY a.ArtistName
 HAVING COUNT(al.Label) > 1;
 
-SELECT a.Title, a.AlbumLength
+SELECT a.Title AS 'Album', a.AlbumLength 
 FROM Album a
 WHERE a.AlbumLength = 
 	(SELECT MAX(a.AlbumLength)
