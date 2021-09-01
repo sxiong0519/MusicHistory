@@ -198,5 +198,18 @@ GROUP BY Song.GenreId;
 SELECT a.ArtistName 
 FROM Artist a 
 JOIN Album al ON a.Id = al.ArtistId
-GROUP BY al.Label
+GROUP BY a.ArtistName
 HAVING COUNT(al.Label) > 1;
+
+SELECT a.Title, a.AlbumLength
+FROM Album a
+WHERE a.AlbumLength = 
+	(SELECT MAX(a.AlbumLength)
+	FROM Album a);
+
+SELECT s.Title, s.SongLength, a.Title AS 'Album'
+FROM Song s
+JOIN Album a ON s.AlbumId = a.Id
+WHERE s.SongLength =
+	(SELECT MAX(s.SongLength)
+	FROM Song s);
